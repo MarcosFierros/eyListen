@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">eyListen</string>
+    <string name="app_name">heyListen</string>
+    <string name="activity_main_library">Biblioteca</string>
+
 </resources>
