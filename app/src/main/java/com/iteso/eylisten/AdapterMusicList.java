@@ -1,6 +1,8 @@
 package com.iteso.eylisten;
 
 import android.support.annotation.NonNull;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,8 +18,12 @@ import java.util.List;
 public class AdapterMusicList extends RecyclerView.Adapter<AdapterMusicList.MyViewHolder> {
 
     List<MusicList> musiclibrary;
+    FragmentManager fragmentManager;
 
-    public AdapterMusicList(ArrayList<MusicList> musiclibrary) { this.musiclibrary = musiclibrary; }
+    public AdapterMusicList(ArrayList<MusicList> musiclibrary, FragmentManager fragmentManager) {
+        this.musiclibrary = musiclibrary;
+        this.fragmentManager = fragmentManager;
+    }
 
     @NonNull
     @Override
@@ -43,10 +49,20 @@ public class AdapterMusicList extends RecyclerView.Adapter<AdapterMusicList.MyVi
         TextView name;
         ImageView imageView;
 
-        public MyViewHolder(@NonNull View itemView) {
+        public MyViewHolder(@NonNull final View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.item_name);
             imageView = itemView.findViewById(R.id.item_image);
+
+            imageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    FragmentPlaylist fragmentPlaylist = new FragmentPlaylist();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.replace(R.id.activity_main_container, fragmentPlaylist);
+                    fragmentTransaction.commit();
+                }
+            });
         }
     }
 

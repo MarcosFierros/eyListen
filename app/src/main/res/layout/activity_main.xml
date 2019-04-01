@@ -1,70 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<com.sothree.slidinguppanel.SlidingUpPanelLayout xmlns:sothree="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/sliding_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ActivityMain"
-    android:orientation="vertical"
-    android:background="@drawable/background_gradient">
+    android:gravity="bottom"
+    sothree:umanoPanelHeight="68dp"
+    sothree:umanoOverlay="true"
+    sothree:umanoShadowHeight="0dp"
+    sothree:umanoParallaxOffset="100dp">
 
-
-    <RelativeLayout
-        android:layout_margin="15dp"
+    <FrameLayout
+        android:id="@+id/activity_main_container"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center">
+        android:layout_height="match_parent"/>
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:fontFamily="sans-serif-light"
-            android:text="@string/activity_main_library"
-            android:textSize="@dimen/string_title" />
+    <include layout="@layout/player_main"/>
 
-        <ImageButton
-            android:id="@+id/activity_main_settings"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@android:color/transparent"
-            android:src="@drawable/ic_settings"
-            android:layout_alignParentEnd="true"/>
-    </RelativeLayout>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="@dimen/string_small_title"
-        android:text="online music"
-        android:layout_marginLeft="15dp"
-        android:layout_marginBottom="5dp"/>
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/activity_main_online_recycler"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:scrollbars="none">
-
-    </android.support.v7.widget.RecyclerView>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="@dimen/string_small_title"
-        android:text="playlists"
-        android:layout_marginTop="15dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginBottom="5dp"/>
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/activity_main_playlist_recycler"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:scrollbars="none">
-
-    </android.support.v7.widget.RecyclerView>
-
-
-</LinearLayout>
+</com.sothree.slidinguppanel.SlidingUpPanelLayout>
