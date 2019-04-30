@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:layout_height="match_parent"
+    android:paddingLeft="30dp"
+    android:paddingRight="30dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/background_gradient">
+
+
+    <TextView
+        android:id="@+id/eq_title"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="120dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="sans-serif-light"
+        android:text="EQUALIZER"
+        android:textSize="30dp"
+        android:layout_marginBottom="120dp"
+        />
+
+    <SeekBar
+        android:layout_below="@id/eq_title"
+        android:id="@+id/playerr_eq_progress"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="16dp"
+        android:progressBackgroundTint="@android:color/white"
+        android:progress="88"
+        android:layout_marginBottom="30dp"/>
+
+
+    <SeekBar
+        android:id="@+id/playerr_eq_progress2"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_below="@id/playerr_eq_progress"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="16dp"
+        android:progressBackgroundTint="@android:color/white"
+        android:progress="64"
+        android:layout_marginBottom="30dp"/>
+
+    <SeekBar
+        android:id="@+id/playerr_eq_progress3"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_below="@id/playerr_eq_progress2"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="16dp"
+        android:progressBackgroundTint="@android:color/white"
+        android:progress="64"
+        android:layout_marginBottom="30dp"/>
+
+
+    <SeekBar
+        android:id="@+id/playerr_eq_progress4"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_below="@id/playerr_eq_progress3"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="16dp"
+        android:progressBackgroundTint="@android:color/white"
+        android:progress="76"
+        android:layout_marginBottom="30dp"/>
+
+
+    <SeekBar
+        android:id="@+id/playerr_eq_progress5"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_below="@id/playerr_eq_progress4"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="16dp"
+        android:progressBackgroundTint="@android:color/white"
+        android:progress="55"/>
+
+    <Button
+        android:id="@+id/eq_save"
+        android:layout_marginTop="70dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/playerr_eq_progress5"
+        android:layout_centerHorizontal="true"
+        android:text="SAVE"
+        android:background="@drawable/buttonbackgroundlogin"/>
+
+
+
+</RelativeLayout>

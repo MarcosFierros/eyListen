@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">eyListen</string>
+    <string name="app_name">heyListen</string>
+    <string name="activity_main_library">Biblioteca</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>
