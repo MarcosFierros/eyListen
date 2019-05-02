@@ -10,7 +10,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="nameOfSong"
-        android:fontFamily="sans-serif-light"
         android:textStyle="bold"
         android:textSize="18sp"/>
 
@@ -21,7 +20,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="nameOfArtist"
-        android:fontFamily="sans-serif-light"
         android:textSize="15sp"
         android:layout_below="@id/item_music_song"/>
 

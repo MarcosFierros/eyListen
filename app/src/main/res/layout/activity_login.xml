@@ -4,18 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="10dp"
-    android:background="@drawable/lofi"
     tools:context=".ActivityLogin">
 
-
-
+    <com.jgabrielfreitas.core.BlurImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        app:radius="5"
+        android:src="@drawable/lofi"/>
 
     <android.support.v7.widget.CardView
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:layout_above="@id/activity_login_username"
-
         android:elevation="12dp"
         android:id="@+id/view2"
         app:cardCornerRadius="40dp"
@@ -28,7 +29,7 @@
             android:layout_below="@+id/view2"
             android:layout_alignStart="@+id/view2"
             android:scaleType="centerCrop"
-            android:src="@drawable/navi" />
+            android:src="@drawable/logo" />
     </android.support.v7.widget.CardView>
 
     <EditText
@@ -39,13 +40,12 @@
         android:layout_above="@+id/activity_login_password"
         android:background="@drawable/background_inputtext"
         android:padding="10dp"
-        android:layout_marginBottom="7dp"
+        android:layout_marginBottom="10dp"
         android:hint="USERNAME"
         android:layout_centerHorizontal="true"
         style="@style/Widget.AppCompat.EditText"
         android:textAlignment="center"
-        android:inputType="text"
-         />
+        android:inputType="text" />
 
     <EditText
         android:id="@+id/activity_login_password"
@@ -58,8 +58,7 @@
         android:layout_centerHorizontal="true"
         android:textAlignment="center"
         android:inputType="textPassword"
-        android:layout_marginBottom="7dp"
-         />
+        android:layout_marginBottom="10dp"/>
 
     <Button
         android:id="@+id/activity_login_login"
@@ -72,14 +71,14 @@
         android:layout_marginBottom="30dp"
         android:text="LOGIN" />
 
+
     <Button
         android:id="@+id/activity_login_facebook"
         android:layout_width="165dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/activity_login_login"
         android:background="@drawable/buttonbackground"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="30dp"
+        android:layout_marginLeft="35dp"
         android:textColor="@android:color/white"
         android:text="FACEBOOK"
        />
@@ -87,12 +86,13 @@
     <Button
         android:id="@+id/activity_login_google"
         android:layout_width="165dp"
-        android:layout_marginRight="25dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/activity_login_login"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="25dp"
         android:layout_toRightOf="@id/activity_login_facebook"
         android:background="@drawable/buttonbackgroundred"
-        android:textColor="@android:color/white"
-        android:text="GOOGLE" />
+        android:text="GOOGLE"
+        android:textColor="@android:color/white" />
 
 </RelativeLayout>

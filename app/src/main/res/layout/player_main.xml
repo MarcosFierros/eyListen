@@ -34,7 +34,6 @@
             android:layout_alignParentTop="true"
             android:layout_marginLeft="20dp"
             android:layout_toEndOf="@+id/player_main_cardview"
-            android:fontFamily="sans-serif-light"
             android:text="nameOfSong"
             android:textSize="18sp" />
 
@@ -46,7 +45,6 @@
             android:layout_toEndOf="@+id/player_main_cardview"
             android:layout_marginTop="3dp"
             android:layout_marginLeft="20dp"
-            android:fontFamily="sans-serif-light"
             android:text="nameOfArtist"
             android:textSize="15sp" />
 
@@ -90,7 +88,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:fontFamily="sans-serif-light"
                 android:textStyle="bold"
                 android:textColor="@android:color/white"
                 android:text="nameOfSong"
@@ -103,7 +100,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="20dp"
-                android:fontFamily="sans-serif-light"
                 android:text="nameOfArtist"
                 android:layout_gravity="center"
                 android:textSize="15sp"
@@ -132,7 +128,6 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif-light"
                         android:text="0:00"
                         android:textSize="15sp"
                         android:textColor="#AAAAAA"/>
@@ -140,7 +135,6 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif-light"
                         android:layout_alignParentEnd="true"
                         android:text="0:00"
                         android:textSize="15sp"

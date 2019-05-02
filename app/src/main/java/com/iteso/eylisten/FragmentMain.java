@@ -41,8 +41,8 @@ public class FragmentMain extends Fragment {
         musicLibrary = new ArrayList<>();
         playlists = new ArrayList<>();
         for(int i = 0; i < 10; i++){
-            playlists.add(new MusicList(i, "PLAYLIST " + i, i+""));
-            musicLibrary.add(new MusicList(i, "ALBUM " + i, i+""));
+            playlists.add(new MusicList(i, "PLAYLIST " + i, i+"",false));
+            musicLibrary.add(new MusicList(i, "ALBUM " + i, i+"",false));
         }
 
         onlineRecycler = v.findViewById(R.id.activity_main_online_recycler);

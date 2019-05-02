@@ -3,16 +3,38 @@ package com.iteso.eylisten.beans;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.ArrayList;
+
 public class MusicList implements Parcelable {
 
     private Integer id;
     private String name;
-    private String image;
 
-    public MusicList(Integer id, String name, String image) {
+    public boolean isEditable() {
+        return editable;
+    }
+
+    public void setEditable(boolean editable) {
+        this.editable = editable;
+    }
+
+    private String image;
+    private boolean editable;
+    private ArrayList<Song> songArrayList;
+
+    public ArrayList<Song> getSongArrayList() {
+        return songArrayList;
+    }
+
+    public void setSongArrayList(ArrayList<Song> songArrayList) {
+        this.songArrayList = songArrayList;
+    }
+
+    public MusicList(Integer id, String name, String image, boolean editable) {
         this.id = id;
         this.name = name;
         this.image = image;
+        this.editable = editable;
     }
 
     public MusicList(Parcel in) {

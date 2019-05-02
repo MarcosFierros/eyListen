@@ -10,7 +10,8 @@
     sothree:umanoPanelHeight="68dp"
     sothree:umanoOverlay="true"
     sothree:umanoShadowHeight="0dp"
-    sothree:umanoParallaxOffset="100dp">
+    sothree:umanoParallaxOffset="100dp"
+    android:accessibilityPaneTitle="">
 
     <FrameLayout
         android:id="@+id/activity_main_container"

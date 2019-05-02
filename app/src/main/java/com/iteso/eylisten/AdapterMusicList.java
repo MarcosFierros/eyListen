@@ -1,5 +1,6 @@
 package com.iteso.eylisten;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.FragmentManager;
@@ -57,10 +58,12 @@ public class AdapterMusicList extends RecyclerView.Adapter<AdapterMusicList.MyVi
             imageView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    FragmentPlaylist fragmentPlaylist = new FragmentPlaylist();
-                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                    fragmentTransaction.replace(R.id.activity_main_container, fragmentPlaylist);
-                    fragmentTransaction.commit();
+//                    FragmentPlaylist fragmentPlaylist = new FragmentPlaylist();
+//                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//                    fragmentTransaction.replace(R.id.activity_main_container, fragmentPlaylist);
+//                    fragmentTransaction.commit();
+                    Intent intent = new Intent(itemView.getContext(), ActivityPlaylist.class);
+                    itemView.getContext().startActivity(intent);
                 }
             });
         }
