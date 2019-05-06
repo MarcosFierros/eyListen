@@ -95,4 +95,9 @@
         android:text="GOOGLE"
         android:textColor="@android:color/white" />
 
+    <com.facebook.login.widget.LoginButton
+        android:id="@+id/login_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
 </RelativeLayout>

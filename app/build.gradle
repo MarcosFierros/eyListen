@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-apply plugin: 'com.amazonaws.appsync'
+
 
 android {
     compileSdkVersion 28
@@ -48,9 +48,16 @@ dependencies {
     implementation 'com.amazonaws:aws-android-sdk-appsync:2.7.+'
     implementation 'org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.2.0'
     implementation 'org.eclipse.paho:org.eclipse.paho.android.service:1.1.1'
-
-
-
+    // Firebase
+    implementation 'com.google.firebase:firebase-core:16.0.4'
+    implementation 'com.google.firebase:firebase-database:16.0.3'
+    implementation 'com.google.firebase:firebase-messaging:17.3.4'
+    implementation 'com.google.firebase:firebase-auth:16.2.1'
+    // Blur image
     implementation 'com.github.jgabrielfreitas:BlurImageView:1.0.1'
 
+
 }
+
+apply plugin: 'com.amazonaws.appsync'
+apply plugin: 'com.google.gms.google-services'

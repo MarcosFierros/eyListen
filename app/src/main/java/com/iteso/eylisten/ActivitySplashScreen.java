@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Base64;
 import android.util.Log;
 
+import com.facebook.AccessToken;
 import com.iteso.eylisten.Tools.Constant;
 import com.iteso.eylisten.beans.User;
 
@@ -31,7 +32,7 @@ public class ActivitySplashScreen extends AppCompatActivity {
         TimerTask task = new TimerTask() {
             @Override
             public void run() {
-                User user = loadPrefrerences();
+                /*User user = loadPrefrerences();
                 Intent mainIntent;
                 if(user.isLooged())
                     mainIntent = new Intent().setClass(ActivitySplashScreen.this, ActivityMain.class);
@@ -39,13 +40,22 @@ public class ActivitySplashScreen extends AppCompatActivity {
                     mainIntent = new Intent().setClass(ActivitySplashScreen.this, ActivityLogin.class);
                 startActivity(mainIntent);
 
-                finish();
+                finish();*/
+                Intent intent;
+                if(AccessToken.getCurrentAccessToken() != null)
+                    intent = new Intent(getApplicationContext(), ActivityMain.class);
+                 else
+                    intent = new Intent(getApplicationContext(), ActivityLogin.class);
+
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK
+                        | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
             }
         };
 
         Timer timer = new Timer();
-        timer.schedule(task, 2000);
-
+        timer.schedule(task, 1000);
+        /*
         try {
             PackageInfo info =
                     getPackageManager().getPackageInfo("com.iteso.eyListen",
@@ -59,11 +69,11 @@ public class ActivitySplashScreen extends AppCompatActivity {
             e.printStackTrace();
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
-        }
+        }*/
 
     }
 
-    public User loadPrefrerences () {
+    /*public User loadPrefrerences () {
         SharedPreferences sharedPreferences =
                 getSharedPreferences(Constant.USER_PREFERENCES, MODE_PRIVATE);
         User user = new User();
@@ -72,6 +82,6 @@ public class ActivitySplashScreen extends AppCompatActivity {
         user.setLooged(sharedPreferences.getBoolean("LOGGED", false));
         sharedPreferences = null;
         return user;
-    }
+    }*/
 
 }

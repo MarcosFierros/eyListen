@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "201686802635",
+    "firebase_url": "https://heylisten-62e4d.firebaseio.com",
+    "project_id": "heylisten-62e4d",
+    "storage_bucket": "heylisten-62e4d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:201686802635:android:dbb9e8b21ea20ff3",
+        "android_client_info": {
+          "package_name": "com.iteso.eylisten"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "201686802635-8koap2dr4tpg67irael1fdknaumonkkp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.iteso.eylisten",
+            "certificate_hash": "ec0cd52f57b8256edd8f1b9520a77aea04bf673c"
+          }
+        },
+        {
+          "client_id": "201686802635-dgvh8r858ia7f8oa0dadd23j7pnm8ba5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDHDyg6pOgR5MhH6JH5xLna2ANFy7Pg8tY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "201686802635-dgvh8r858ia7f8oa0dadd23j7pnm8ba5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

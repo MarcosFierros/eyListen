@@ -15,6 +15,7 @@ import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
+import com.google.firebase.auth.FirebaseAuth;
 import com.iteso.eylisten.Tools.Constant;
 
 import java.util.Arrays;
@@ -42,6 +43,7 @@ public class activity_settings extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                FirebaseAuth.getInstance().signOut();
                 LoginManager.getInstance().logOut();
                 SharedPreferences sharedPreferences =
                         getSharedPreferences(Constant.USER_PREFERENCES, MODE_PRIVATE);
