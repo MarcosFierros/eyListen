@@ -16,13 +16,15 @@ import com.facebook.FacebookException;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.iteso.eylisten.Tools.Constant;
 
 import java.util.Arrays;
 
 public class activity_settings extends AppCompatActivity {
 
-    CallbackManager callbackManager;
+    private TextView logoutAccount;
+    private CallbackManager callbackManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,8 +38,13 @@ public class activity_settings extends AppCompatActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-         TextView log_out = findViewById(R.id.log_out);
-         TextView Equalizer= findViewById(R.id.equalizer);
+        TextView log_out = findViewById(R.id.log_out);
+        TextView Equalizer= findViewById(R.id.equalizer);
+        logoutAccount = findViewById(R.id.activity_settings_account_name);
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if(user != null)
+            logoutAccount.setText(logoutAccount.getText() +" " + user.getDisplayName());
 
         log_out.setOnClickListener(new View.OnClickListener() {
             @Override

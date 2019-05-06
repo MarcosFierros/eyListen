@@ -3,13 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".FragmentMain"
     android:orientation="vertical"
     android:background="@drawable/background_gradient">
 
     <RelativeLayout
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="10dp"
+        android:layout_margin="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center">
@@ -18,23 +18,32 @@
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_centerVertical="true"
             android:layout_alignParentStart="true"
             android:text="@string/activity_main_library"
             android:textSize="@dimen/string_title" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/activity_main_account_pic"
+            android:layout_centerVertical="true"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_toStartOf="@+id/activity_main_settings"
+            app:civ_border_width="2dp"
+            app:civ_border_color="@color/colorAccent"
+            android:src="@drawable/com_facebook_profile_picture_blank_square"/>
 
         <ImageButton
             android:id="@+id/activity_main_settings"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_centerVertical="true"
             android:backgroundTint="@android:color/transparent"
             android:src="@drawable/ic_settings"
             android:layout_alignParentEnd="true"
             android:onClick="goSettings"/>
+
     </RelativeLayout>
-
-
 
     <ScrollView
         android:layout_width="match_parent"
