@@ -1,6 +1,7 @@
 package com.iteso.eylisten;
 
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.FragmentManager;
@@ -11,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.iteso.eylisten.Tools.Constant;
 import com.iteso.eylisten.beans.MusicList;
 
 import java.util.ArrayList;
@@ -20,6 +22,7 @@ public class AdapterMusicList extends RecyclerView.Adapter<AdapterMusicList.MyVi
 
     List<MusicList> musiclibrary;
     FragmentManager fragmentManager;
+    int index;
 
     public AdapterMusicList(ArrayList<MusicList> musiclibrary, FragmentManager fragmentManager) {
         this.musiclibrary = musiclibrary;
@@ -36,8 +39,21 @@ public class AdapterMusicList extends RecyclerView.Adapter<AdapterMusicList.MyVi
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
-        MusicList list = musiclibrary.get(i);
+        final MusicList list = musiclibrary.get(i);
         myViewHolder.name.setText(list.getName());
+        byte[] image = list.getImage();
+        if(image != null) {
+            myViewHolder.imageView.setImageBitmap(BitmapFactory.decodeByteArray(
+                    image, 0 , image.length));
+        }
+        myViewHolder.imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), ActivityPlaylist.class);
+                intent.putExtra(Constant.EXTRAS_PLAYLIST, list);
+                v.getContext().startActivity(intent);
+            }
+        });
     }
 
     @Override

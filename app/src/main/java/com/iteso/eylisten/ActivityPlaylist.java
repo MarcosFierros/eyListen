@@ -1,5 +1,6 @@
 package com.iteso.eylisten;
 
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -11,35 +12,36 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.ImageView;
 
+import com.iteso.eylisten.Tools.Constant;
 import com.iteso.eylisten.beans.MusicList;
 import com.iteso.eylisten.beans.Song;
+import com.jgabrielfreitas.core.BlurImageView;
 
 import java.util.ArrayList;
 
 public class ActivityPlaylist extends AppCompatActivity {
 
     private RecyclerView songRecycler;
-    private ArrayList<Song> songList;
+    private MusicList musicList;
+    private ImageView playlistImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_playlist);
 
-        songList = new ArrayList<>();
-        songList.add(new Song("CANCION 1", "ARTISTA 1"));
-        songList.add(new Song("CANCION 2", "ARTISTA 2"));
-        songList.add(new Song("CANCION 3", "ARTISTA 3"));
-        songList.add(new Song("CANCION 4", "ARTISTA 4"));
-        songList.add(new Song("CANCION 5", "ARTISTA 5"));
-        songList.add(new Song("CANCION 6", "ARTISTA 6"));
-        songList.add(new Song("CANCION 7", "ARTISTA 7"));
-        songList.add(new Song("CANCION 8", "ARTISTA 8"));
-        songList.add(new Song("CANCION 9", "ARTISTA 9"));
+        songRecycler = findViewById(R.id.fragment_playlist_recycler);
+        playlistImage = findViewById(R.id.activity_playlist_image);
 
-        MusicList musicList = new MusicList(0, "Playlist 1", "0",false);
-        musicList.setSongArrayList(songList);
+        musicList = getIntent().getParcelableExtra(Constant.EXTRAS_PLAYLIST);
+
+        byte[] image = musicList.getImage();
+        if(image != null) {
+            playlistImage.setImageBitmap(BitmapFactory.decodeByteArray(
+                    image, 0, image.length));
+        }
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -62,7 +64,7 @@ public class ActivityPlaylist extends AppCompatActivity {
             }
         });
 
-        songRecycler = findViewById(R.id.fragment_playlist_recycler);
+
         songRecycler.setLayoutManager(new LinearLayoutManager(this));
         songRecycler.setItemAnimator(new DefaultItemAnimator());
         songRecycler.setAdapter(new AdapterMusic(musicList.getSongArrayList()));

@@ -18,4 +18,9 @@ public class Constant {
 
     public static final String USER_PREFERENCES = "com.iteso.USER_PREFERENCES";
 
+    public static final int REQUEST_READ_EXTERNAL = 9998;
+
+    public static final String BUNDLE_LOCALFILES = "localfiles";
+    public static final String EXTRAS_PLAYLIST = "PLAYLIST";
+
 }

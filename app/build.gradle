@@ -53,6 +53,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-database:16.0.3'
     implementation 'com.google.firebase:firebase-messaging:17.3.4'
     implementation 'com.google.firebase:firebase-auth:16.2.1'
+    implementation 'com.google.firebase:firebase-storage:16.1.0'
+
     // Blur image
     implementation 'com.github.jgabrielfreitas:BlurImageView:1.0.1'
 

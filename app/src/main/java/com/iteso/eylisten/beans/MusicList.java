@@ -9,38 +9,41 @@ public class MusicList implements Parcelable {
 
     private Integer id;
     private String name;
-
-    public boolean isEditable() {
-        return editable;
-    }
-
-    public void setEditable(boolean editable) {
-        this.editable = editable;
-    }
-
-    private String image;
+    private byte[] image;
     private boolean editable;
     private ArrayList<Song> songArrayList;
 
-    public ArrayList<Song> getSongArrayList() {
-        return songArrayList;
+    public MusicList() { }
+
+    protected MusicList(Parcel in) {
+        if (in.readByte() == 0) {
+            id = null;
+        } else {
+            id = in.readInt();
+        }
+        name = in.readString();
+        image = in.createByteArray();
+        editable = in.readByte() != 0;
+        songArrayList = in.createTypedArrayList(Song.CREATOR);
     }
 
-    public void setSongArrayList(ArrayList<Song> songArrayList) {
-        this.songArrayList = songArrayList;
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        if (id == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeInt(id);
+        }
+        dest.writeString(name);
+        dest.writeByteArray(image);
+        dest.writeByte((byte) (editable ? 1 : 0));
+        dest.writeTypedList(songArrayList);
     }
 
-    public MusicList(Integer id, String name, String image, boolean editable) {
-        this.id = id;
-        this.name = name;
-        this.image = image;
-        this.editable = editable;
-    }
-
-    public MusicList(Parcel in) {
-        this.id = (Integer) in.readValue(Integer.class.getClassLoader());
-        this.name = in.readString();
-        this.image = in.readString();
+    @Override
+    public int describeContents() {
+        return 0;
     }
 
     public static final Creator<MusicList> CREATOR = new Creator<MusicList>() {
@@ -71,23 +74,27 @@ public class MusicList implements Parcelable {
         this.name = name;
     }
 
-    public String getImage() {
+    public byte[] getImage() {
         return image;
     }
 
-    public void setImage(String image) {
+    public void setImage(byte[] image) {
         this.image = image;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
+    public boolean isEditable() {
+        return editable;
     }
 
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeValue(this.id);
-        dest.writeString(this.name);
-        dest.writeString(this.image);
+    public void setEditable(boolean editable) {
+        this.editable = editable;
+    }
+
+    public ArrayList<Song> getSongArrayList() {
+        return songArrayList;
+    }
+
+    public void setSongArrayList(ArrayList<Song> songArrayList) {
+        this.songArrayList = songArrayList;
     }
 }

@@ -34,17 +34,6 @@ public class FragmentPlaylist extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_playlist, container, false);
 
-        songList = new ArrayList<>();
-        songList.add(new Song("CANCION 1", "ARTISTA 1"));
-        songList.add(new Song("CANCION 2", "ARTISTA 2"));
-        songList.add(new Song("CANCION 3", "ARTISTA 3"));
-        songList.add(new Song("CANCION 4", "ARTISTA 4"));
-        songList.add(new Song("CANCION 5", "ARTISTA 5"));
-        songList.add(new Song("CANCION 6", "ARTISTA 6"));
-        songList.add(new Song("CANCION 7", "ARTISTA 7"));
-        songList.add(new Song("CANCION 8", "ARTISTA 8"));
-        songList.add(new Song("CANCION 9", "ARTISTA 9"));
-
         songRecycler = v.findViewById(R.id.fragment_playlist_recycler);
         back = v.findViewById(R.id.fragment_playlist_back);
 

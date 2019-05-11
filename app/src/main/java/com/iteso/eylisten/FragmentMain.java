@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.media.FaceDetector;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -16,10 +17,15 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.bumptech.glide.Glide;
+import com.facebook.AccessToken;
+import com.facebook.AccessTokenTracker;
+import com.facebook.CallbackManager;
+import com.google.firebase.FirebaseAppLifecycleListener;
 import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserInfo;
+import com.iteso.eylisten.Tools.Constant;
 import com.iteso.eylisten.Tools.GlideApp;
 import com.iteso.eylisten.beans.MusicList;
 
@@ -37,11 +43,12 @@ public class FragmentMain extends Fragment {
     private ImageButton settings;
     private CircleImageView accountImage;
 
+    private FirebaseAuth firebaseAuth;
+    private FirebaseAuth.AuthStateListener firebaseAuthListener;
 
     public FragmentMain() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -49,32 +56,17 @@ public class FragmentMain extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_main, container, false);
 
+
         musicLibrary = new ArrayList<>();
         playlists = new ArrayList<>();
-        for(int i = 0; i < 10; i++){
-            playlists.add(new MusicList(i, "PLAYLIST " + i, i+"",false));
-            musicLibrary.add(new MusicList(i, "ALBUM " + i, i+"",false));
-        }
+        Bundle bundle = this.getArguments();
+        if (bundle != null)
+            musicLibrary = bundle.getParcelableArrayList(Constant.BUNDLE_LOCALFILES);
 
         onlineRecycler = v.findViewById(R.id.activity_main_online_recycler);
         playlistRecycler = v.findViewById(R.id.activity_main_playlist_recycler);
         settings= v.findViewById(R.id.activity_main_settings);
         accountImage = v.findViewById(R.id.activity_main_account_pic);
-
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        String photourl = "";
-        for(UserInfo profile: user.getProviderData()) {
-            if(FacebookAuthProvider.PROVIDER_ID.equals(profile.getProviderId())){
-                photourl = "https://graph.facebook.com/" + profile.getUid() + "/picture?height=500";
-            }
-        }
-
-        GlideApp.with(v.getContext())
-                .load(Uri.parse(photourl))
-                .centerCrop()
-                .placeholder(R.drawable.com_facebook_profile_picture_blank_square)
-                .into(accountImage);
-
 
         mOnlineAdapter = new AdapterMusicList(musicLibrary, getFragmentManager());
         mPlaylistAdapter = new AdapterMusicList(playlists, getFragmentManager());
@@ -95,9 +87,46 @@ public class FragmentMain extends Fragment {
         playlistRecycler.setItemAnimator(new DefaultItemAnimator());
         playlistRecycler.setAdapter(mPlaylistAdapter);
 
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseAuthListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                fetchUserInfo();
+            }
+        };
+
         return v;
+    }
+
+    private void fetchUserInfo(){
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String photourl = "";
+        if(user != null) {
+            for(UserInfo profile: user.getProviderData()) {
+                if(FacebookAuthProvider.PROVIDER_ID.equals(profile.getProviderId())){
+                    photourl = "https://graph.facebook.com/" + profile.getUid() + "/picture?height=500";
+                }
+            }
+
+            GlideApp.with(getContext())
+                    .load(Uri.parse(photourl))
+                    .centerCrop()
+                    .placeholder(R.drawable.com_facebook_profile_picture_blank_square)
+                    .into(accountImage);
+        }
     }
 
 
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        firebaseAuth.addAuthStateListener(firebaseAuthListener);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        firebaseAuth.removeAuthStateListener(firebaseAuthListener);
+    }
 }
