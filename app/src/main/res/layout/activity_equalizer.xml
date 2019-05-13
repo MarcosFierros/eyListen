@@ -25,67 +25,133 @@
             android:orientation="vertical"
             android:padding="30dp">
 
-            <SeekBar
-                android:id="@+id/playerr_eq_progress1"
-                style="?android:attr/progressBarStyleHorizontal"
+            <Spinner
+                android:id="@+id/eq_spinner"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" />
+
+
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:layout_marginEnd="40dp"
-                android:layout_marginStart="40dp"
-                android:layout_marginTop="16dp"
-                android:progressBackgroundTint="@android:color/white"
-                android:progress="88"
-                android:layout_marginBottom="30dp"/>
+                android:layout_height="wrap_content">
+                <SeekBar
+                    android:id="@+id/playerr_eq_progress1"
+                    android:clickable="false"
+                    android:enabled="false"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_marginEnd="40dp"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginTop="16dp"
+                    android:progressBackgroundTint="@android:color/white"
+                    android:progress="88"
+                    android:layout_marginBottom="30dp"/>
 
+                <TextView
+                    android:paddingTop="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="BL1"
+                    android:textColor="@color/colorPrimaryDark"/>
 
-            <SeekBar
-                android:id="@+id/playerr_eq_progress2"
-                style="?android:attr/progressBarStyleHorizontal"
+            </RelativeLayout>
+
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:layout_marginEnd="40dp"
-                android:layout_marginStart="40dp"
-                android:layout_marginTop="16dp"
-                android:progressBackgroundTint="@android:color/white"
-                android:progress="64"
-                android:layout_marginBottom="30dp"/>
+                android:layout_height="wrap_content">
+                <SeekBar
+                    android:id="@+id/playerr_eq_progress2"
+                    android:enabled="false"
+                    android:clickable="false"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_marginEnd="40dp"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginTop="16dp"
+                    android:progressBackgroundTint="@android:color/white"
+                    android:progress="64"
+                    android:layout_marginBottom="30dp"/>
+                <TextView
+                    android:paddingTop="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="BL2"
+                    android:textColor="@color/colorPrimaryDark"/>
+            </RelativeLayout>
 
-            <SeekBar
-                android:id="@+id/playerr_eq_progress3"
-                style="?android:attr/progressBarStyleHorizontal"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:layout_marginEnd="40dp"
-                android:layout_marginStart="40dp"
-                android:layout_marginTop="16dp"
-                android:progressBackgroundTint="@android:color/white"
-                android:progress="64"
-                android:layout_marginBottom="30dp"/>
+                android:layout_height="wrap_content">
+                <SeekBar
+                    android:id="@+id/playerr_eq_progress3"
+                    android:enabled="false"
+                    android:clickable="false"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_marginEnd="40dp"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginTop="16dp"
+                    android:progressBackgroundTint="@android:color/white"
+                    android:progress="64"
+                    android:layout_marginBottom="30dp"/>
+                <TextView
+                    android:paddingTop="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="BL3"
+                    android:textColor="@color/colorPrimaryDark"/>
+            </RelativeLayout>
 
 
-            <SeekBar
-                android:id="@+id/playerr_eq_progress4"
-                style="?android:attr/progressBarStyleHorizontal"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:layout_marginEnd="40dp"
-                android:layout_marginStart="40dp"
-                android:layout_marginTop="16dp"
-                android:progressBackgroundTint="@android:color/white"
-                android:progress="76"
-                android:layout_marginBottom="30dp"/>
+                android:layout_height="wrap_content">
+                <SeekBar
+                    android:id="@+id/playerr_eq_progress4"
+                    android:enabled="false"
+                    android:clickable="false"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_marginEnd="40dp"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginTop="16dp"
+                    android:progressBackgroundTint="@android:color/white"
+                    android:progress="76"
+                    android:layout_marginBottom="30dp"/>
+                <TextView
+                    android:paddingTop="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="BL4"
+                    android:textColor="@color/colorPrimaryDark"/>
+            </RelativeLayout>
 
-
-            <SeekBar
-                android:id="@+id/playerr_eq_progress5"
-                style="?android:attr/progressBarStyleHorizontal"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:layout_marginEnd="40dp"
-                android:layout_marginStart="40dp"
-                android:layout_marginTop="16dp"
-                android:progressBackgroundTint="@android:color/white"
-                android:progress="55"/>
+                android:layout_height="wrap_content">
+                <SeekBar
+                    android:id="@+id/playerr_eq_progress5"
+                    android:enabled="false"
+                    android:clickable="false"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_marginEnd="40dp"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginTop="16dp"
+                    android:progressBackgroundTint="@android:color/white"
+                    android:progress="55"/>
+                <TextView
+                    android:paddingTop="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="BL5"
+                    android:textColor="@color/colorPrimaryDark"/>
+            </RelativeLayout>
 
             <Button
                 android:id="@+id/eq_save"
@@ -93,7 +159,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:text="SAVE"
+                android:text="SAVE CHANGES"
                 android:background="@drawable/buttonbackgroundlogin"/>
 
         </LinearLayout>

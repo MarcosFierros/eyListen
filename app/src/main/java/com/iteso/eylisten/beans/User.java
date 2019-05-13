@@ -1,22 +1,42 @@
 package com.iteso.eylisten.beans;
 
-public class User {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class User implements Parcelable {
 
     private String name;
-    private String password;
-    private boolean isLooged;
+    private int typeOfPlaylist;
+    private int currentPLaylist;
+    private int currentSong;
 
-    public User() {
-        setName("");
-        setPassword("");
-        setLooged(false);
-    }
+    public User() { };
 
-    public User(String name, String password, boolean isLooged) {
+    public User(String name) {
         this.name = name;
-        this.password = password;
-        this.isLooged = isLooged;
+        this.typeOfPlaylist = 0;
+        this.currentPLaylist = 0;
+        this.currentSong = 0;
     }
+
+    protected User(Parcel in) {
+        name = in.readString();
+        typeOfPlaylist = in.readInt();
+        currentPLaylist = in.readInt();
+        currentSong = in.readInt();
+    }
+
+    public static final Creator<User> CREATOR = new Creator<User>() {
+        @Override
+        public User createFromParcel(Parcel in) {
+            return new User(in);
+        }
+
+        @Override
+        public User[] newArray(int size) {
+            return new User[size];
+        }
+    };
 
     public String getName() {
         return name;
@@ -26,19 +46,40 @@ public class User {
         this.name = name;
     }
 
-    public String getPassword() {
-        return password;
+    public int getTypeOfPlaylist() {
+        return typeOfPlaylist;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setTypeOfPlaylist(int typeOfPlaylist) {
+        this.typeOfPlaylist = typeOfPlaylist;
     }
 
-    public boolean isLooged() {
-        return isLooged;
+    public int getCurrentPLaylist() {
+        return currentPLaylist;
     }
 
-    public void setLooged(boolean looged) {
-        isLooged = looged;
+    public void setCurrentPLaylist(int currentPLaylist) {
+        this.currentPLaylist = currentPLaylist;
+    }
+
+    public int getCurrentSong() {
+        return currentSong;
+    }
+
+    public void setCurrentSong(int currentSong) {
+        this.currentSong = currentSong;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(name);
+        dest.writeInt(typeOfPlaylist);
+        dest.writeInt(currentPLaylist);
+        dest.writeInt(currentSong);
     }
 }

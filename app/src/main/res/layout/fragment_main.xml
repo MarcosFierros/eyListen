@@ -58,9 +58,24 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/string_small_title"
-                android:text="online music"
+                android:text="local music"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="15dp"
+                android:layout_marginBottom="5dp"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/activity_main_local_recycler"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scrollbars="none"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/string_small_title"
+                android:text="online music"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"/>
 
             <android.support.v7.widget.RecyclerView
@@ -69,15 +84,30 @@
                 android:layout_height="wrap_content"
                 android:scrollbars="none"/>
 
-
-            <TextView
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/string_small_title"
-                android:text="playlists"
-                android:layout_marginTop="15dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginBottom="5dp"/>
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/string_small_title"
+                    android:text="playlists"
+                    android:layout_marginLeft="15dp"/>
+
+                <ImageButton
+                    android:id="@+id/activity_main_add"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@android:color/transparent"
+                    android:src="@drawable/ic_add_circle_black_24dp"/>
+
+            </LinearLayout>
+
+
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/activity_main_playlist_recycler"
