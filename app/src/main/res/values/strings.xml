@@ -97,4 +97,17 @@
     <string name="action_settings">Settings</string>
     <string name="facebook_app_id">411194582995219</string>
     <string name="fb_login_protocol_scheme">fb411194582995219</string>
+
+    <string-array name="eq_array">
+        <item>Normal</item>
+        <item>Classical</item>
+        <item>Dance</item>
+        <item>Flat</item>
+        <item>Folk</item>
+        <item>Heavy Metal</item>
+        <item>Hip Hop</item>
+        <item>Jazz</item>
+        <item>Pop</item>
+    </string-array>
+
 </resources>

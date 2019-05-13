@@ -1,7 +1,11 @@
 package com.iteso.eylisten;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.FragmentManager;
@@ -13,21 +17,45 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.iteso.eylisten.Tools.Constant;
+import com.iteso.eylisten.Tools.GlideApp;
 import com.iteso.eylisten.beans.MusicList;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.zip.CheckedOutputStream;
 
-public class AdapterMusicList extends RecyclerView.Adapter<AdapterMusicList.MyViewHolder> {
+public class AdapterMusicList extends RecyclerView.Adapter<AdapterMusicList.MyViewHolder> implements Parcelable {
 
     List<MusicList> musiclibrary;
+    Context context;
     FragmentManager fragmentManager;
+    Activity activity;
     int index;
 
-    public AdapterMusicList(ArrayList<MusicList> musiclibrary, FragmentManager fragmentManager) {
+    public AdapterMusicList(ArrayList<MusicList> musiclibrary, FragmentManager fragmentManager, Activity activity, Context context) {
         this.musiclibrary = musiclibrary;
+        this.context = context;
         this.fragmentManager = fragmentManager;
+        this.activity = activity;
     }
+
+
+    protected AdapterMusicList(Parcel in) {
+        musiclibrary = in.createTypedArrayList(MusicList.CREATOR);
+        index = in.readInt();
+    }
+
+    public static final Creator<AdapterMusicList> CREATOR = new Creator<AdapterMusicList>() {
+        @Override
+        public AdapterMusicList createFromParcel(Parcel in) {
+            return new AdapterMusicList(in);
+        }
+
+        @Override
+        public AdapterMusicList[] newArray(int size) {
+            return new AdapterMusicList[size];
+        }
+    };
 
     @NonNull
     @Override
@@ -45,13 +73,19 @@ public class AdapterMusicList extends RecyclerView.Adapter<AdapterMusicList.MyVi
         if(image != null) {
             myViewHolder.imageView.setImageBitmap(BitmapFactory.decodeByteArray(
                     image, 0 , image.length));
+        } else if (list.getImageurl() != null) {
+            GlideApp.with(context)
+                    .load(list.getImageurl())
+                    .centerCrop()
+                    .placeholder(R.drawable.logo)
+                    .into(myViewHolder.imageView);
         }
         myViewHolder.imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), ActivityPlaylist.class);
                 intent.putExtra(Constant.EXTRAS_PLAYLIST, list);
-                v.getContext().startActivity(intent);
+                ((ActivityMain) activity).startActivityForResult(intent, 2);
             }
         });
     }
@@ -59,6 +93,16 @@ public class AdapterMusicList extends RecyclerView.Adapter<AdapterMusicList.MyVi
     @Override
     public int getItemCount() {
         return musiclibrary.size();
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeTypedList(musiclibrary);
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
@@ -74,10 +118,6 @@ public class AdapterMusicList extends RecyclerView.Adapter<AdapterMusicList.MyVi
             imageView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-//                    FragmentPlaylist fragmentPlaylist = new FragmentPlaylist();
-//                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//                    fragmentTransaction.replace(R.id.activity_main_container, fragmentPlaylist);
-//                    fragmentTransaction.commit();
                     Intent intent = new Intent(itemView.getContext(), ActivityPlaylist.class);
                     itemView.getContext().startActivity(intent);
                 }

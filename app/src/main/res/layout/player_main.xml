@@ -106,7 +106,7 @@
                 android:textColor="#AAAAAA"/>
 
             <SeekBar
-                android:id="@+id/playerr_main_progress"
+                android:id="@+id/player_main_progress"
                 style="?android:attr/progressBarStyleHorizontal"
                 android:layout_width="match_parent"
                 android:layout_height="20dp"

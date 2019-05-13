@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -30,7 +31,14 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserInfo;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.iteso.eylisten.Tools.Constant;
+import com.iteso.eylisten.Tools.GlideApp;
 import com.iteso.eylisten.beans.User;
 
 import java.security.MessageDigest;
@@ -39,10 +47,7 @@ import java.util.Arrays;
 
 public class ActivityLogin extends AppCompatActivity {
 
-    private EditText username;
-    private EditText password;
-    private Button login, facebook;
-    private LoginButton loginButton;
+    private Button facebook;
     private CallbackManager callbackManager;
 
     private FirebaseAuth firebaseAuth;
@@ -54,30 +59,6 @@ public class ActivityLogin extends AppCompatActivity {
 
         callbackManager = CallbackManager.Factory.create();
         setContentView(R.layout.activity_login);
-
-        username = findViewById(R.id.activity_login_username);
-        password = findViewById(R.id.activity_login_password);
-        login = findViewById(R.id.activity_login_login);
-        loginButton = findViewById(R.id.login_button);
-
-        loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
-            @Override
-            public void onSuccess(LoginResult loginResult) {
-                handleFacebookAccessToken(loginResult.getAccessToken());
-            }
-
-            @Override
-            public void onCancel() {
-                Toast.makeText(getApplicationContext(),
-                        "CANCEL LOGIN", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onError(FacebookException error) {
-                Toast.makeText(getApplicationContext(),
-                        "FACEBOOK AUTH ERROR", Toast.LENGTH_SHORT).show();
-            }
-        });
 
         LoginManager.getInstance().registerCallback(
                 callbackManager, new FacebookCallback<LoginResult>() {
@@ -106,15 +87,6 @@ public class ActivityLogin extends AppCompatActivity {
             }
         });
 
-        login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                savePreferences();
-                Intent intent = new Intent(ActivityLogin.this, ActivityMain.class);
-                startActivity(intent);
-            }
-        });
-
 
         firebaseAuth = firebaseAuth.getInstance();
         firebaseAuthListener = new FirebaseAuth.AuthStateListener() {
@@ -130,22 +102,6 @@ public class ActivityLogin extends AppCompatActivity {
             }
         };
 
-    }
-
-    public void savePreferences() {
-
-        User user = new User();
-        user.setName(username.getText().toString());
-        user.setPassword(password.getText().toString());
-        user.setLooged(true);
-
-        SharedPreferences sharedPreferences =
-                getSharedPreferences(Constant.USER_PREFERENCES, MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("USER", user.getName());
-        editor.putString("PWD", user.getPassword());
-        editor.putBoolean("LOGGED", user.isLooged());
-        editor.apply();
     }
 
     @Override
@@ -194,6 +150,7 @@ public class ActivityLogin extends AppCompatActivity {
                 }
             }
         });
+
     }
 
 
